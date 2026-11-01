@@ -1,43 +1,28 @@
 # 中国古典诗词 PDF 文库
 
-本仓库用于整理由 `chinese-poetry/chinese-poetry` 数据集转换得到的 PDF 电子文档。
+本仓库包含自动转换工具，用于把上游 `chinese-poetry/chinese-poetry` 数据集中的 JSON、文本说明、SQLite 数据库及图片整理为可下载 PDF。
 
-## 内容概览
+## 如何生成并下载 PDF
 
-原始压缩包经转换后，目录清单记录了 **165 本 PDF、21 个分类**：
+1. 打开本仓库的 [Actions 工作流](https://github.com/sia1915/chinese-poetry-pdf-library/actions/workflows/build-pdfs.yml)。
+2. 选择 **Build and publish poetry PDFs**。
+3. 点击 **Run workflow**，再点击绿色的 **Run workflow** 确认。
+4. 等待工作流完成（数据量较大，可能需要较长时间）。
+5. 打开 [Releases 页面](https://github.com/sia1915/chinese-poetry-pdf-library/releases)。
+6. 在 **Chinese Poetry PDF Library v1** 下下载 `chinese-poetry-pdf-library.zip`。
 
-| 分类 | PDF 册数 |
-|---|---:|
-| 全唐诗 | 43 |
-| 宋词 | 2 |
-| 宋词 SQLite 数据库 | 1 |
-| 五代诗词 | 1 |
-| 元曲 | 1 |
-| 楚辞 | 1 |
-| 诗经 | 1 |
-| 论语 | 1 |
-| 四书五经 | 1 |
-| 蒙学 | 1 |
-| 纳兰性德 | 1 |
-| 曹操诗集 | 1 |
-| 幽梦影 | 1 |
-| 水墨唐诗 | 1 |
-| 御定全唐詩 | 60 |
-| rank 辅助数据 | 23 |
-| strains 韵律数据 | 21 |
-| loader | 1 |
-| 项目说明与源代码 | 1 |
-| 项目图片资料 | 1 |
-| 项目其他文件 | 1 |
+工作流会从上游仓库重新下载原始数据、逐个 JSON 生成 PDF、制作目录，并把 PDF 汇总压缩为 Release 附件。这样不需要通过聊天窗口下载或手动上传大文件。
 
-## 目录
+## 当前仓库文件
 
-- [PDF 文件清单](chinese_poetry_pdf_catalog.txt)
+- `scripts/build_pdfs.py`：批量转换脚本。
+- `.github/workflows/build-pdfs.yml`：GitHub Actions 自动构建和发布工作流。
+- `chinese_poetry_pdf_catalog.txt`：初始目录说明；实际完整文件目录会随构建结果放入发布压缩包。
 
-## 重要说明
+## 内容范围
 
-当前仓库已建立目录说明。**PDF 二进制文件本身尚未上传**；本次 GitHub 连接提供的是文本文件写入能力，没有可直接从聊天附件上传大型二进制文件或创建 Release 附件的接口。请勿把本仓库当前状态理解为 165 本 PDF 已全部托管。
+包括全唐诗、全宋诗、宋词、五代诗词、元曲、楚辞、诗经、论语、四书五经、蒙学、纳兰性德、曹操诗集、幽梦影、御定全唐詩，以及 rank、strains 等辅助数据。具体 PDF 文件数以工作流生成的发布包目录为准。
 
-原始数据项目：[chinese-poetry/chinese-poetry](https://github.com/chinese-poetry/chinese-poetry)
+## 数据来源与许可
 
-转换文件采用中文字体排版。部分 JSON 辅助数据按字段形式呈现，并非全部是传统书籍版式。使用和再分发时请核查原始数据来源及适用权利。
+原始数据来自 [chinese-poetry/chinese-poetry](https://github.com/chinese-poetry/chinese-poetry)。上游仓库标注 MIT License；原始资料来自互联网，使用和再分发时仍应核查具体数据来源及权利。
