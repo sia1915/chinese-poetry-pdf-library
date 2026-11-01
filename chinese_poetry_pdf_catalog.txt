@@ -1,28 +1,12 @@
-chinese-poetry PDF 文件内容目录
+中国古典诗词 PDF 文库：构建说明
 
-PDF 总数：165 本
-内容分类：21 类
+完整 PDF 文件清单将在 GitHub Actions 构建完成后，自动写入发布包内的 dist/chinese_poetry_pdf_catalog.txt。
 
-1. 全唐诗（43 本）：全唐诗_第01册.pdf 至 全唐诗_第43册.pdf
-2. 宋词（2 本）：宋词_第01册.pdf、宋词_第02册.pdf
-3. 宋词 SQLite 数据库（1 本）：宋词_SQLite数据库.pdf
-4. 五代诗词（1 本）：五代诗词_第01册.pdf
-5. 元曲（1 本）：元曲_第01册.pdf
-6. 楚辞（1 本）：楚辞_第01册.pdf
-7. 诗经（1 本）：诗经_第01册.pdf
-8. 论语（1 本）：论语_第01册.pdf
-9. 四书五经（1 本）：四书五经_第01册.pdf
-10. 蒙学（1 本）：蒙学_第01册.pdf
-11. 纳兰性德（1 本）：纳兰性德_第01册.pdf
-12. 曹操诗集（1 本）：曹操诗集_第01册.pdf
-13. 幽梦影（1 本）：幽梦影_第01册.pdf
-14. 水墨唐诗（1 本）：水墨唐诗_第01册.pdf
-15. 御定全唐詩（60 本）：御定全唐詩_第01册.pdf 至 御定全唐詩_第60册.pdf
-16. rank（23 本）：rank_第01册.pdf 至 rank_第23册.pdf
-17. strains（21 本）：strains_第01册.pdf 至 strains_第21册.pdf
-18. loader（1 本）：loader_第01册.pdf
-19. 项目说明与源代码（1 本）：项目说明与源代码.pdf
-20. 项目图片资料（1 本）：项目图片资料.pdf
-21. 项目其他文件（1 本）：项目其他文件.pdf
+如何生成：
+1. 打开 https://github.com/sia1915/chinese-poetry-pdf-library/actions/workflows/build-pdfs.yml
+2. 点击 Build and publish poetry PDFs。
+3. 点击 Run workflow 并确认。
+4. 等待工作流完成。
+5. 前往 https://github.com/sia1915/chinese-poetry-pdf-library/releases 下载 chinese-poetry-pdf-library.zip。
 
-说明：本目录按转换产物的实际文件名归类。rank、strains 为项目辅助数据；项目说明、图片和其他文件单独成册。
+本文件是构建前的说明，不代表 PDF 二进制文件已经上传。
