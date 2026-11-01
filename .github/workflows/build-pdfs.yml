@@ -1,0 +1,54 @@
+name: Build and publish poetry PDFs
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Check out this repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install PDF dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install reportlab pillow
+
+      - name: Download the original poetry dataset
+        run: |
+          curl -L --retry 3 --fail \
+            https://github.com/chinese-poetry/chinese-poetry/archive/refs/heads/master.zip \
+            -o source.zip
+          mkdir source
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile("source.zip") as z:
+              z.extractall(".")
+          PY
+          mv chinese-poetry-master source
+
+      - name: Convert source data to PDFs
+        run: python scripts/build_pdfs.py
+
+      - name: Publish downloadable ZIP
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: pdf-library-v1
+          name: Chinese Poetry PDF Library v1
+          body: |
+            Automatically generated PDF collection from chinese-poetry/chinese-poetry.
+            Download chinese-poetry-pdf-library.zip below. The ZIP includes the PDFs and a full text catalog.
+          files: |
+            dist/chinese-poetry-pdf-library.zip
+          fail_on_unmatched_files: true
+          make_latest: true
